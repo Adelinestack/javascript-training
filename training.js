@@ -79,3 +79,63 @@ const node1 = {
   rightChildren: node3,
   value: 1,
 };
+
+function browse(node) {
+  if (node.leftChildren === null) {
+    return node.value;
+  } else {
+    return (
+      node.value +
+      ' ' +
+      browse(node.leftChildren) +
+      ' ' +
+      browse(node.rightChildren)
+    );
+  }
+}
+console.log(browse(node2));
+
+//Exercice 6
+//Imaginez que vous avez cette structure de données.
+//Vous souhaitez maintenant afficher les catégories dans un menu…
+//et elles ne sont pas très bien rangées. Vous auriez préféré une
+//structure comme celle qui suit :
+// {
+//   "tech": {
+//     "hot_right_now": {},
+//     "upcomming_releases": {},
+//     "gadgets": {}
+//   },
+//   "news": {
+//     "europe": {},
+//     "asia": {},
+//     "events": {},
+//     "usa": {}
+//   },
+//   "startups": {
+//     "social": {},
+//     "funding": {
+//       "venture_capital": {},
+//       "crowdfunding": {}
+//     },
+//     "unicorns": {}
+//   }
+// }
+
+const categories = [
+  { name: 'tech', parent: null },
+  { name: 'hot_right_now', parent: 'tech' },
+  { name: 'upcomming_releases', parent: 'tech' },
+  { name: 'gadgets', parent: 'tech' },
+  { name: 'news', parent: null },
+  { name: 'social', parent: 'startups' },
+  { name: 'europe', parent: 'news' },
+  { name: 'asia', parent: 'news' },
+  { name: 'events', parent: 'news' },
+  { name: 'startups', parent: null },
+  { name: 'funding', parent: 'startups' },
+  { name: 'unicorns', parent: 'startups' },
+  { name: 'venture_capital', parent: 'funding' },
+  { name: 'crowdfunding', parent: 'funding' },
+  { name: 'usa', parent: 'news' },
+];
